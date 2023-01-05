@@ -1,6 +1,7 @@
 package com.mahomud.islamicapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
@@ -14,7 +15,12 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.mahomud.islamicapp.data.database.QuranDao;
+import com.mahomud.islamicapp.data.database.QuranDatabase;
+import com.mahomud.islamicapp.data.pojo.Sora;
 import com.mahomud.islamicapp.databinding.ActivityMainBinding;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        Sora sora = QuranDatabase.getInstance(this).quranDao().getSoraByNumber(2);
+        Log.e("TAG", "onCreate:" + sora.getStartPage() +"  "+ sora.getEndPage() + "  "+ sora.getEnglishName());
     }
 
     @Override

@@ -1,8 +1,6 @@
 package com.mahomud.islamicapp.data;
 
 import android.content.Context;
-import android.icu.number.NumberFormatter;
-import android.icu.number.NumberFormatterSettings;
 
 import java.text.DecimalFormat;
 

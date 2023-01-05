@@ -57,5 +57,6 @@ public class QuranContainerFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         pagerAdapter = new QuranPagesAdapter(getActivity());
         binding.quranPager.setAdapter(pagerAdapter);
+        binding.quranPager.setCurrentItem(604);
     }
 }
