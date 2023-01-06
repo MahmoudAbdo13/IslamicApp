@@ -3,13 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/quranFragment">
+    app:startDestination="@+id/nav_quran">
 
     <fragment
-        android:id="@+id/quranFragment"
+        android:id="@+id/nav_quran"
         android:name="com.mahomud.islamicapp.ui.quran.quranContainer.QuranContainerFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_page_quran" />
+
+    <fragment
+        android:id="@+id/nav_prayer_time"
+        android:name="com.mahomud.islamicapp.ui.prayerTimes.prayerTimesHome.PrayerTimesFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_prayer_times" />
 
 
 </navigation>
