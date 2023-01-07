@@ -14,13 +14,19 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import com.mahomud.islamicapp.data.database.QuranDao;
 import com.mahomud.islamicapp.data.database.QuranDatabase;
 import com.mahomud.islamicapp.data.pojo.Sora;
+import com.mahomud.islamicapp.data.pojo.azan.AzanPrayersUtil;
+import com.mahomud.islamicapp.data.pojo.azan.RegisterPrayerTimesWorker;
 import com.mahomud.islamicapp.databinding.ActivityMainBinding;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        //Sora sora = QuranDatabase.getInstance(this).quranDao().getSoraByNumber(2);
-        //Log.e("TAG", "onCreate:" + sora.getStartPage() +"  "+ sora.getEndPage() + "  "+ sora.getEnglishName());
+        AzanPrayersUtil.registerPrayers(this);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

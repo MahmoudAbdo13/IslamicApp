@@ -1,5 +1,6 @@
 package com.mahomud.islamicapp.ui.prayerTimes.prayerTimesHome;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.View;
 
@@ -10,6 +11,8 @@ import com.mahomud.islamicapp.data.networking.PrayerRetrofit;
 import com.mahomud.islamicapp.data.pojo.PrayerAPIResponse;
 import com.mahomud.islamicapp.data.pojo.PrayerTiming;
 import com.mahomud.islamicapp.data.pojo.Timings;
+import com.mahomud.islamicapp.data.pojo.azan.AzanPrayersUtil;
+import com.mahomud.islamicapp.data.pojo.azan.PrayersPreferences;
 
 import java.util.ArrayList;
 
@@ -44,8 +47,8 @@ public class PrayerTimesViewModel extends ViewModel {
         return prayerTiming;
     }
 
-    public void setPrayerTiming(int day, int month, int year) {
-        getPrayers("27.6421373", "30.6927903", 4, month, year).enqueue(new Callback<PrayerAPIResponse>() {
+    public void setPrayerTiming(Context context , String lat, String lon, int day, int month, int year) {
+        getPrayers(lat, lon, 4, month, year).enqueue(new Callback<PrayerAPIResponse>() {
             @Override
             public void onResponse(Call<PrayerAPIResponse> call, Response<PrayerAPIResponse> response) {
                 Timings timings = response.body().getData().get(day-1)
@@ -63,6 +66,12 @@ public class PrayerTimesViewModel extends ViewModel {
                 Log.e("TAG", "onResponse: 15 "+response.body().getData().get(15).getTimings().getFajr() );
                 ArrayList<PrayerTiming> list = convertFromTimings(timings);
                 prayerTiming.setValue(list);
+
+                PrayersPreferences preferences = new PrayersPreferences(context);
+                preferences.setCity(lat);
+                preferences.setCountry(lon);
+                preferences.setMethod(4);
+                AzanPrayersUtil.registerPrayers(context);
             }
 
             @Override

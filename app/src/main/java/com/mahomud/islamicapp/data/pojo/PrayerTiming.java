@@ -2,19 +2,19 @@ package com.mahomud.islamicapp.data.pojo;
 
 public class PrayerTiming {
 
-    private String paryerName, payerTime;
+    private String prayerName, prayerTime;
 
-    public PrayerTiming(String paryerName, String payerTime) {
-        this.paryerName = paryerName;
-        this.payerTime = payerTime;
+    public PrayerTiming(String prayerName, String prayerTime) {
+        this.prayerName = prayerName;
+        this.prayerTime = prayerTime;
     }
 
-    public String getParyerName() {
-        return paryerName;
+    public String getPrayerName() {
+        return prayerName;
     }
 
-    public String getPayerTime() {
-        return payerTime;
+    public String getPrayerTime() {
+        return prayerTime;
     }
 
 }

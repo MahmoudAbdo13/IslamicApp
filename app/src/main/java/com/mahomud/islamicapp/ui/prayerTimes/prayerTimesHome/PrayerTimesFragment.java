@@ -58,7 +58,7 @@ public class PrayerTimesFragment extends Fragment {
         datePicker.init(calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH), (datePicker1, year, monthOfYear, dayOfMonth) -> {
-            viewModel.setPrayerTiming(dayOfMonth,monthOfYear, year);
+            viewModel.setPrayerTiming(getContext(), "27.6421373", "30.6927903", dayOfMonth,monthOfYear, year);
                 });
         adapter = new PrayerTimesAdapter();
 

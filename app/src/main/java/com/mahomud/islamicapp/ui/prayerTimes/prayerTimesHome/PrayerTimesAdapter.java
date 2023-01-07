@@ -1,6 +1,5 @@
 package com.mahomud.islamicapp.ui.prayerTimes.prayerTimesHome;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,8 +51,8 @@ public class PrayerTimesAdapter extends RecyclerView.Adapter<PrayerTimesAdapter.
         }
 
         public void bind(PrayerTiming timing){
-            prayerName.setText(timing.getParyerName());
-            prayerTime.setText(timing.getPayerTime());
+            prayerName.setText(timing.getPrayerName());
+            prayerTime.setText(timing.getPrayerTime());
         }
     }
 }
